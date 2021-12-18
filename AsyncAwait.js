@@ -6,7 +6,6 @@
 async function f1() {
     return Promise.resolve(1);
   }
-  
   f1().then(function(){
       console.log("async");
   }); // 1

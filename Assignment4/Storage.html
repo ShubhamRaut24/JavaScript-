@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <div style="display: inline-block;">
+  <h2 style="background-color: aqua; display: inline;">Local Storage</h2>
+  <p id="p1"></p>
+  <h2 style="background-color: aqua; display: inline;">Session Storage</h2>
+  <p id="p2"></p>
+  <button style="background-color: black; color:white;">Click</button>
+</div>
+  <script>
+    sessionStorage.setItem('key', 0);
+
+    const ele1 = document.getElementById('p1');
+    const ele2 = document.getElementById('p2');
+
+    let localNumber = localStorage.getItem('key');
+    if(!localNumber){
+      localStorage.setItem('key', 0);
+    }
+
+    ele1.innerText = localStorage.getItem('key');
+    ele2.innerText = sessionStorage.getItem('key');
+    const button = document.querySelector('button');
+
+    button.addEventListener('click', (event) => {
+      localNumber = localStorage.getItem('key');
+
+      let sessionNumber = sessionStorage.getItem('key');
+      localStorage.setItem('key', Number.parseInt(localNumber) + 1);
+      sessionStorage.setItem('key', Number.parseInt(sessionNumber) + 1);
+      ele1.innerText =  localStorage.getItem('key');
+      ele2.innerText =  sessionStorage.getItem('key');
+    });
+  </script>
+</body>
+</html>
